@@ -64,30 +64,31 @@ module.exports = function toReadable(number) {
 
     function returnDecimalNumber(strNum) {
         let decimalResult;
+        let numStrNum = Number(strNum);
 
-        if (objectDecimal[number]) {
+        if (objectDecimal[numStrNum]) {
             // если есть уже готовый вариант, то возвращаем его.
-            decimalResult = objectDecimal[number];
-        } else if (number > 20 && number < 30) {
+            decimalResult = objectDecimal[numStrNum];
+        } else if (numStrNum > 20 && numStrNum < 30) {
             decimalResult = "twenty " + objectSingle[strNum[1]];
-        } else if (number > 30 && number < 40) {
+        } else if (numStrNum > 30 && numStrNum < 40) {
             decimalResult = "thirty " + objectSingle[strNum[1]];
-        } else if (number > 40 && number < 50) {
+        } else if (numStrNum > 40 && numStrNum < 50) {
             decimalResult = "forty " + objectSingle[strNum[1]];
-        } else if (number > 50 && number < 60) {
+        } else if (numStrNum > 50 && numStrNum < 60) {
             decimalResult = "fifty " + objectSingle[strNum[1]];
-        } else if (number > 60 && number < 70) {
+        } else if (numStrNum > 60 && numStrNum < 70) {
             decimalResult = "sixty " + objectSingle[strNum[1]];
-        } else if (number > 70 && number < 80) {
+        } else if (numStrNum > 70 && numStrNum < 80) {
             decimalResult = "seventy " + objectSingle[strNum[1]];
-        } else if (number > 80 && number < 90) {
+        } else if (numStrNum > 80 && numStrNum < 90) {
             decimalResult = "eighty " + objectSingle[strNum[1]];
-        } else if (number > 90 && number < 100) {
+        } else if (numStrNum > 90 && numStrNum < 100) {
             decimalResult = "ninety " + objectSingle[strNum[1]];
         }
 
-        console.log("------------");
-        console.log(decimalResult);
+        /* console.log("------------");
+        console.log(decimalResult); */
 
         return decimalResult;
     }
@@ -103,28 +104,47 @@ module.exports = function toReadable(number) {
             hundredthsResult = hundredthsResult + " " + objectSingle[strNum[2]];
         } else if (strNumber[1] === "1") {
             hundredthsResult =
+                hundredthsResult + " " + objectDecimal[strNum.slice(1, 3)];
+        } else if (strNumber[1] === "2") {
+            hundredthsResult =
                 hundredthsResult +
                 " " +
-                objectDecimal[Number(strNum.slice(1, 3))];
-        } else if (strNumber[1] === "2") {
-            decimalResult = "thirty " + objectSingle[Number(strNum[1])];
+                returnDecimalNumber(strNum.slice(1, 3));
         } else if (strNumber[1] === "3") {
-            decimalResult = "forty " + objectSingle[Number(strNum[1])];
+            hundredthsResult =
+                hundredthsResult +
+                " " +
+                returnDecimalNumber(strNum.slice(1, 3));
         } else if (strNumber[1] === "4") {
-            decimalResult = "fifty " + objectSingle[Number(strNum[1])];
+            hundredthsResult =
+                hundredthsResult +
+                " " +
+                returnDecimalNumber(strNum.slice(1, 3));
         } else if (strNumber[1] === "5") {
-            decimalResult = "sixty " + objectSingle[Number(strNum[1])];
+            hundredthsResult =
+                hundredthsResult +
+                " " +
+                returnDecimalNumber(strNum.slice(1, 3));
         } else if (strNumber[1] === "6") {
-            decimalResult = "seventy " + objectSingle[Number(strNum[1])];
+            hundredthsResult =
+                hundredthsResult +
+                " " +
+                returnDecimalNumber(strNum.slice(1, 3));
         } else if (strNumber[1] === "7") {
             hundredthsResult =
                 hundredthsResult +
                 " " +
                 returnDecimalNumber(strNum.slice(1, 3));
         } else if (strNumber[1] === "8") {
-            decimalResult = "ninety " + objectSingle[Number(strNum[1])];
+            hundredthsResult =
+                hundredthsResult +
+                " " +
+                returnDecimalNumber(strNum.slice(1, 3));
         } else if (strNumber[1] === "9") {
-            decimalResult = "ninety " + objectSingle[Number(strNum[1])];
+            hundredthsResult =
+                hundredthsResult +
+                " " +
+                returnDecimalNumber(strNum.slice(1, 3));
         }
 
         return hundredthsResult;
